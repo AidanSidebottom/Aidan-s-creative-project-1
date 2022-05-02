@@ -7,15 +7,17 @@ fetch("https://type.fit/api/quotes")
   .then((data) => {
     console.log(data);
     createQuote(data);
+    rng(data);
   });
 
 function createQuote(data) {
   quote = document.createElement("h3");
-  let random = rng();
+  let random = rng(data);
   quote.innerHTML = data[random].text;
-  console.log(data[rng()].text);
+  console.log(data[random].text);
   document.body.appendChild(quote);
   quote.className = "quote";
+  quote.id = "quote1";
   button(data);
   textBox(data[random].text);
 }
@@ -28,12 +30,15 @@ function button(data) {
   };
 }
 function changeQuote(data) {
-  quote.innerHTML = data[rng()].text;
-  console.log(data[rng()].text);
+  let random = rng(data);
+  quote.innerHTML = data[random].text;
+  console.log(data[random].text);
+  document.getElementById("box1").remove();
+  textBox(data[random].text);
 }
-function rng() {
-  let random = Math.floor(Math.random() * 1000) + 1;
-  console.log(random);
+function rng(data) {
+  let arrayLength = data.length;
+  let random = Math.floor(Math.random() * arrayLength) + 1;
   return random;
 }
 function textBox(data) {
@@ -43,6 +48,7 @@ function textBox(data) {
   document.body.appendChild(box);
   box.className = "box";
   box.id = "box1";
+
   box.oninput = function () {
     check(data);
   };
@@ -50,10 +56,12 @@ function textBox(data) {
 function check(data) {
   let change = document.getElementById("box1").value;
   console.log(change);
+  console.log(data);
   if (data == change) {
     console.log("correct");
+    document.getElementById("quote1").style = "color:green";
   } else {
     console.log("incorrect");
-    let x = false;
+    document.getElementById("quote1").style = "color:red";
   }
 }
