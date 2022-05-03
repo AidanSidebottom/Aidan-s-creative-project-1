@@ -1,4 +1,5 @@
 let quote;
+let startTime;
 
 fetch("https://type.fit/api/quotes")
   .then((response) => {
@@ -9,7 +10,7 @@ fetch("https://type.fit/api/quotes")
     createQuote(data);
     rng(data);
   });
-
+console.log(Date.now());
 function createQuote(data) {
   quote = document.createElement("h3");
   let random = rng(data);
@@ -18,15 +19,27 @@ function createQuote(data) {
   document.body.appendChild(quote);
   quote.className = "quote";
   quote.id = "quote1";
-  button(data);
+  randomButton(data);
+  deleteButton();
   textBox(data[random].text);
 }
-function button(data) {
+function randomButton(data) {
   let button = document.createElement("button");
   button.innerHTML = "Random Quote";
   document.body.appendChild(button);
+  let br = document.createElement("br");
+  document.body.appendChild(br);
   button.onclick = function () {
     changeQuote(data);
+  };
+}
+function deleteButton() {
+  let del = document.createElement("button");
+  del.innerHTML = "delete all";
+  document.body.appendChild(del);
+  del.onclick = function () {
+    document.getElementById("box1");
+    box1.value = "";
   };
 }
 function changeQuote(data) {
@@ -48,9 +61,14 @@ function textBox(data) {
   document.body.appendChild(box);
   box.className = "box";
   box.id = "box1";
-
+  let x = true;
   box.oninput = function () {
     check(data);
+
+    if (x) {
+      startTime = Date.now();
+      x = false;
+    }
   };
 }
 function check(data) {
@@ -60,6 +78,9 @@ function check(data) {
   if (data == change) {
     console.log("correct");
     document.getElementById("quote1").style = "color:green";
+    console.log(Date.now());
+    console.log(startTime);
+    console.log(Date.now() - startTime);
   } else {
     console.log("incorrect");
     document.getElementById("quote1").style = "color:red";
