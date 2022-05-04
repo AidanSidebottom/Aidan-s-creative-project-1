@@ -4,10 +4,18 @@ h1 {
   padding: 10px;
   margin: 0px;
   font-size: 60px;
+  color: white;
 }
 body {
-  background-color: #f3f3f3;
+  background-color: #18181a;
   margin: 0px;
+}
+button {
+  font-size: 20px;
+  border-radius: 20px;
+  border-color: #46bac0;
+  background-color: #18181a;
+  color: #e4609b;
 }
 .quote {
   margin: 10px;
@@ -23,5 +31,5 @@ body {
   width: 40%;
 }
 #bar {
-  background-color: darkgrey;
+  background-color: #46bac0;
 }
