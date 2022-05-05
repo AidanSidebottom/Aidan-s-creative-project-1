@@ -1,6 +1,5 @@
 let quote;
-let startTime;
-
+let startTime = 0;
 fetch("https://type.fit/api/quotes")
   .then((response) => {
     return response.json();
@@ -9,8 +8,9 @@ fetch("https://type.fit/api/quotes")
     console.log(data);
     createQuote(data);
     rng(data);
+    wpm();
   });
-console.log(Date.now());
+
 function createQuote(data) {
   quote = document.createElement("h3");
   let random = rng(data);
@@ -75,14 +75,19 @@ function check(data) {
   let change = document.getElementById("box1").value;
   console.log(change);
   console.log(data);
+  startTime = Date.now();
   if (data == change) {
+    wpm();
     console.log("correct");
     document.getElementById("quote1").style = "color:green";
-    console.log(Date.now());
-    console.log(startTime);
-    console.log(Date.now() - startTime);
   } else {
     console.log("incorrect");
     document.getElementById("quote1").style = "color:red";
   }
+}
+function wpm() {
+  let endTime = Date.now() - startTime;
+  let wpmCounter = document.createElement("h1");
+  wpmCounter.innerHTML = endTime;
+  document.body.appendChild(wpmCounter);
 }
