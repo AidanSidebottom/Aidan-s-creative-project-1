@@ -8,7 +8,6 @@ fetch("https://type.fit/api/quotes")
     console.log(data);
     createQuote(data);
     rng(data);
-    wpm();
   });
 
 function createQuote(data) {
@@ -47,6 +46,13 @@ function changeQuote(data) {
   quote.innerHTML = data[random].text;
   console.log(data[random].text);
   document.getElementById("box1").remove();
+  if (
+    document.getElementById("timeCounter") &&
+    document.getElementById("wpmCounter")
+  ) {
+    document.getElementById("timeCounter").remove();
+    document.getElementById("wpmCounter").remove();
+  }
   textBox(data[random].text);
 }
 function rng(data) {
@@ -75,7 +81,7 @@ function check(data) {
   let change = document.getElementById("box1").value;
   console.log(change);
   console.log(data);
-  startTime = Date.now();
+
   if (data == change) {
     wpm();
     console.log("correct");
@@ -86,8 +92,14 @@ function check(data) {
   }
 }
 function wpm() {
-  let endTime = Date.now() - startTime;
+  let endTime = Date.now();
+  let time = (endTime - startTime) / 1000;
+  let timeCounter = document.createElement("h1");
+  timeCounter.id = "timeCounter";
+  timeCounter.innerHTML = "Time: " + time;
+  document.body.appendChild(timeCounter);
   let wpmCounter = document.createElement("h1");
-  wpmCounter.innerHTML = endTime;
+  wpmCounter.id = "wpmCounter";
+  wpmCounter.innerHTML = "WPM: " + time;
   document.body.appendChild(wpmCounter);
 }
