@@ -11,17 +11,21 @@ body {
   margin: 0px;
 }
 button {
-  font-size: 20px;
+  font-size: 30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
   border-radius: 20px;
+  padding-bottom: 6px;
   border-color: #46bac0;
-  background-color: #18181a;
-  color: #e4609b;
+  background-color: #46bac0;
+  color: #ffffff;
+  font-weight: bold;
 }
 .quote {
   margin: 10px;
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  outline-color: blue;
+  color: white;
 }
 .box {
   font-size: large;

@@ -34,7 +34,7 @@ function randomButton(data) {
 }
 function deleteButton() {
   let del = document.createElement("button");
-  del.innerHTML = "delete all";
+  del.innerHTML = "Delete All";
   document.body.appendChild(del);
   del.onclick = function () {
     document.getElementById("box1");
@@ -54,6 +54,7 @@ function changeQuote(data) {
     document.getElementById("wpmCounter").remove();
   }
   textBox(data[random].text);
+  document.getElementById("quote1").style = "color:white";
 }
 function rng(data) {
   let arrayLength = data.length;
@@ -83,7 +84,7 @@ function check(data) {
   console.log(data);
 
   if (data == change) {
-    wpm();
+    wpm(data);
     console.log("correct");
     document.getElementById("quote1").style = "color:green";
   } else {
@@ -91,7 +92,7 @@ function check(data) {
     document.getElementById("quote1").style = "color:red";
   }
 }
-function wpm() {
+function wpm(data) {
   let endTime = Date.now();
   let time = (endTime - startTime) / 1000;
   let timeCounter = document.createElement("h1");
@@ -100,6 +101,6 @@ function wpm() {
   document.body.appendChild(timeCounter);
   let wpmCounter = document.createElement("h1");
   wpmCounter.id = "wpmCounter";
-  wpmCounter.innerHTML = "WPM: " + time;
+  wpmCounter.innerHTML = "WPM: " + Math.round(data.length / 5 / (time / 60));
   document.body.appendChild(wpmCounter);
 }
