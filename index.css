@@ -6,11 +6,20 @@ h1 {
   font-size: 60px;
   color: white;
 }
+h2 {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  text-align: left;
+  padding: 10px;
+  margin: 0px;
+  font-size: 40px;
+  color: white;
+}
 body {
   background-color: #18181a;
   margin: 0px;
 }
 button {
+  cursor: pointer;
   font-size: 30px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
@@ -36,4 +45,7 @@ button {
 }
 #bar {
   background-color: #46bac0;
+}
+#bar2 {
+  background-color: #e4609b;
 }

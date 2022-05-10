@@ -21,6 +21,8 @@ function createQuote(data) {
   randomButton(data);
   deleteButton();
   textBox(data[random].text);
+  document.getElementById("box1").focus();
+  document.getElementById("box1").select();
 }
 function randomButton(data) {
   let button = document.createElement("button");
@@ -55,6 +57,8 @@ function changeQuote(data) {
   }
   textBox(data[random].text);
   document.getElementById("quote1").style = "color:white";
+  document.getElementById("box1").focus();
+  document.getElementById("box1").select();
 }
 function rng(data) {
   let arrayLength = data.length;
