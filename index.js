@@ -27,7 +27,7 @@ function createQuote(data) {
 function randomButton(data) {
   let button = document.createElement("button");
   button.innerHTML = "Random Quote";
-  document.body.appendChild(button);
+  document.getElementById("bar2").appendChild(button);
   let br = document.createElement("br");
   document.body.appendChild(br);
   button.onclick = function () {
@@ -37,7 +37,7 @@ function randomButton(data) {
 function deleteButton() {
   let del = document.createElement("button");
   del.innerHTML = "Delete All";
-  document.body.appendChild(del);
+  document.getElementById("bar2").appendChild(del);
   del.onclick = function () {
     document.getElementById("box1");
     box1.value = "";
