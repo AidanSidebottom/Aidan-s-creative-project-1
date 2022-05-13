@@ -24,11 +24,12 @@ button {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   border-radius: 20px;
-  padding-bottom: 6px;
+  padding-bottom: 20px
   border-color: #cae1e2;
   background-color: #05181a;
   color: #ffffff;
   font-weight: bold;
+  margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
 }

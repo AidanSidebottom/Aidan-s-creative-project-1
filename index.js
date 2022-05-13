@@ -1,5 +1,5 @@
 let quote;
-let startTime = 0;
+let startTime;
 fetch("https://type.fit/api/quotes")
   .then((response) => {
     return response.json();
@@ -19,7 +19,7 @@ function createQuote(data) {
   quote.className = "quote";
   quote.id = "quote1";
   randomButton(data);
-  deleteButton();
+  retryButton();
   textBox(data[random].text);
   document.getElementById("box1").focus();
   document.getElementById("box1").select();
@@ -34,15 +34,19 @@ function randomButton(data) {
     changeQuote(data);
   };
 }
-function deleteButton() {
+function retryButton() {
   let del = document.createElement("button");
-  del.innerHTML = "Delete All";
+  del.innerHTML = "Retry Quote";
   document.getElementById("bar2").appendChild(del);
   del.onclick = function () {
     document.getElementById("box1");
     box1.value = "";
+    document.getElementById("quote1").style = "color:white";
+    document.getElementById("box1").focus();
+    document.getElementById("box1").select();
   };
 }
+
 function changeQuote(data) {
   let random = rng(data);
   quote.innerHTML = data[random].text;
@@ -102,9 +106,9 @@ function wpm(data) {
   let timeCounter = document.createElement("h1");
   timeCounter.id = "timeCounter";
   timeCounter.innerHTML = "Time: " + time;
-  document.body.appendChild(timeCounter);
   let wpmCounter = document.createElement("h1");
   wpmCounter.id = "wpmCounter";
   wpmCounter.innerHTML = "WPM: " + Math.round(data.length / 5 / (time / 60));
+  document.body.appendChild(timeCounter);
   document.body.appendChild(wpmCounter);
 }
